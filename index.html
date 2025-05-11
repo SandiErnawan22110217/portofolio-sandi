@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sandi Ernawan | Web Designer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #000;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      background-color: #000;
+      min-height: 100vh;
+      padding: 0 60px;
+      overflow-x: hidden;
+    }
+
+    .side-label {
+      position: fixed;
+      left: -40px;
+      top: 50%;
+      transform: rotate(-90deg) translateY(-50%);
+      transform-origin: left top;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background-color: red;
+      padding: 10px 20px;
+      z-index: 1;
+      animation: slideInLeft 1.2s ease-in-out;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: white;
+      background: radial-gradient(circle, red, darkred);
+      padding: 10px 20px;
+      border-radius: 50px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: red;
+      bottom: -4px;
+      left: 0;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    .btn-contact {
+      background-color: red;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .btn-contact:hover {
+      background-color: darkred;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 50px;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      max-width: 50%;
+      padding-left: 60px;
+      animation: fadeInUp 1.2s ease-in-out;
+    }
+
+    .hero-text h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .hero-text .name {
+      font-family: 'Courier New', monospace;
+      font-style: italic;
+      color: red;
+      animation: blink 2s infinite;
+    }
+
+    .hero-text .highlight {
+      font-size: 32px;
+      color: red;
+      font-weight: bold;
+    }
+
+    .hero-text p {
+      margin: 20px 0;
+      line-height: 1.5;
+    }
+
+    .buttons {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      background-color: red;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: darkred;
+      transform: scale(1.05);
+    }
+
+    .socials {
+      display: flex;
+      gap: 16px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .socials a {
+      font-size: 18px;
+      color: white;
+      background: #222;
+      padding: 10px 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .socials a:hover {
+      background: red;
+      transform: scale(1.1);
+    }
+
+    .hero-img img {
+      width: 300px;
+      border-radius: 20px;
+      animation: fadeInRight 1.5s ease-in-out;
+    }
+
+    .section {
+      padding: 60px 0;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .section h2 {
+      font-size: 28px;
+      color: red;
+      margin-bottom: 20px;
+      animation: fadeInUp 1s ease;
+    }
+
+    .skill-list {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .skill-list li {
+      background: #222;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .skill-list li:hover {
+      transform: scale(1.1);
+      background: red;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-100px) rotate(-90deg);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0) rotate(-90deg);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="side-label">PORTFOLIO DESIGN</aside>
+
+    <header class="header">
+      <div class="logo">Sandi Ernawan</div>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skill">Skill</a></li>
+          <li><a href="#projects">Projects</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="btn-contact">Contact</a>
+    </header>
+
+    <main class="hero">
+      <div class="hero-text">
+        <h1>Hi, I'm <span class="name">Sandi Ernawan</span></h1>
+        <h2><span class="highlight">Web Designer</span></h2>
+        <p>
+          A young web designer with passion for creativity. Add text what you want to add.
+        </p>
+        <div class="buttons">
+          <a href="#" class="btn">Hire me</a>
+          <a href="#" class="btn">Resume</a>
+        </div>
+        <div class="socials">
+          <a href="#">📎</a>
+          <a href="#">🎨</a>
+          <a href="#">📷</a>
+          <a href="#">💼</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="images/profile.jpg" alt="Sandi Ernawan" />
+      </div>
+    </main>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section">
+      <h2>Tentang Saya</h2>
+      <p>
+        Nama saya <strong>Sandi Ernawan</strong>, seorang Web Designer muda yang memiliki semangat tinggi dalam menciptakan tampilan website yang kreatif, interaktif, dan fungsional. Saya percaya bahwa desain yang baik tidak hanya enak dipandang, tetapi juga mampu memberikan pengalaman pengguna yang maksimal.
+      </p>
+      <p>
+        Sejak mengenal dunia desain web, saya telah banyak bereksperimen dan belajar tentang HTML, CSS, dan UI/UX. Dengan kemampuan tersebut, saya terus mengembangkan diri agar dapat menciptakan karya digital yang tidak hanya menarik secara visual, tetapi juga efektif dalam menyampaikan pesan.
+      </p>
+      <p>
+        Bagi saya, setiap proyek adalah tantangan sekaligus peluang untuk tumbuh dan belajar lebih jauh. Saya senang bekerja sama dalam tim maupun secara individu, dan terbuka untuk berkolaborasi dengan siapa pun yang memiliki visi kreatif dalam dunia digital. Saya juga sangat menghargai feedback, karena saya percaya bahwa setiap masukan dapat membantu saya menjadi lebih baik.
+      </p>
+      <p>
+        Jika Anda sedang mencari seorang Web Designer yang berdedikasi, inovatif, dan mampu mewujudkan ide Anda ke dalam bentuk visual yang menarik, saya siap membantu Anda.
+      </p>
+    </section>
+
+    <!-- SKILL SECTION -->
+    <section id="skill" class="section">
+      <h2>Skills</h2>
+      <ul class="skill-list">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>UI/UX Design</li>
+      </ul>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+      <p>Here are some of my recent works: (Project showcase coming soon)</p>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section">
+      <h2>Kontak Saya</h2>
+      <p>Silakan hubungi saya melalui media berikut:</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/lmsanzz" target="_blank" title="Instagram">📸 Instagram</a>
+        <a href="https://wa.me/6282121093956" target="_blank" title="WhatsApp">📱 WhatsApp</a>
+        <a href="mailto:swatxsanz@gmail.com" target="_blank" title="Email">✉️ Email</a>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
